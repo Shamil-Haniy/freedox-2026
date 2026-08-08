@@ -1,3 +1,4 @@
+# Team Ohm's Lawbreakers
 # V09 — Faculty Development & Participation
 
 DocFree Hackathon 2026
