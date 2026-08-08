@@ -1,17 +1,8 @@
 <%- include('partials/header') %>
 
-<h1>Activities &amp; Events</h1>
+<h1>Activities & Events</h1>
 
-<form method="GET" action="/activities" class="filter-bar">
-  <input type="text" name="search" placeholder="Search by title or organizer..." value="<%= search %>">
-  <select name="type">
-    <option value="">All Types</option>
-    <% types.forEach(function(t) { %>
-      <option value="<%= t.id %>" <%= String(type) === String(t.id) ? 'selected' : '' %>><%= t.name %></option>
-    <% }) %>
-  </select>
-  <button type="submit" class="btn btn-primary">Filter</button>
-</form>
+<a href="/activities/new" class="btn btn-primary" style="margin-bottom: 1rem;">+ Add New Activity</a>
 
 <table>
   <thead>
