@@ -1,0 +1,61 @@
+<%- include('partials/header') %>
+
+<h1><%= activity.title %></h1>
+
+<div class="detail-meta">
+  <p><strong>Type:</strong> <%= activity.type_name %></p>
+  <p><strong>Organizer:</strong> <%= activity.organizer %></p>
+  <p><strong>Date:</strong> <%= activity.event_date %></p>
+  <p><strong>Duration:</strong> <%= activity.duration_days %> days</p>
+  <p><strong>Mode:</strong> <%= activity.mode %></p>
+</div>
+
+<h2>Registered Faculty (<%= participants.length %>)</h2>
+<table>
+  <thead>
+    <tr><th>Faculty</th><th>Designation</th><th>Department</th><th>Role</th><th>Evidence</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+    <% participants.forEach(function(p) { %>
+      <tr>
+        <td><a href="/faculty/<%= p.faculty_id %>"><%= p.faculty_name %></a></td>
+        <td><%= p.designation %></td>
+        <td><%= p.department_name %></td>
+        <td><%= p.role %></td>
+        <td><%= p.evidence_ref || 'N/A' %></td>
+        <td><span class="badge badge-<%= p.verification_status.toLowerCase() %>"><%= p.verification_status %></span></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<h2>Register Faculty</h2>
+<form method="POST" action="/activities/<%= activity.id %>/register" class="form-card">
+  <div class="form-group">
+    <label>Select Faculty</label>
+    <select name="faculty_id" required>
+      <option value="">Choose faculty member</option>
+      <% availableFaculty.forEach(function(f) { %>
+        <option value="<%= f.id %>"><%= f.label %></option>
+      <% }) %>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Role</label>
+    <select name="role" required>
+      <option value="">Select role</option>
+      <option value="Participant">Participant</option>
+      <option value="Speaker">Speaker</option>
+      <option value="Organizer">Organizer</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Evidence Reference (optional)</label>
+    <input type="text" name="evidence_ref" placeholder="e.g. certificate.pdf">
+  </div>
+  <button type="submit" class="btn btn-primary">Register Faculty</button>
+</form>
+
+<a href="/activities" class="btn">&larr; Back to Activities</a>
+
+<%- include('partials/footer') %>

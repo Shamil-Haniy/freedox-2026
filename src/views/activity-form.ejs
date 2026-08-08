@@ -1,0 +1,48 @@
+<%- include('partials/header') %>
+
+<h1>Add New Activity</h1>
+
+<% if (error) { %>
+  <div class="alert alert-error"><%= error %></div>
+<% } %>
+
+<form method="POST" action="/activities" class="form-card">
+  <div class="form-group">
+    <label>Title</label>
+    <input type="text" name="title" value="<%= activity ? activity.title : '' %>" required>
+  </div>
+  <div class="form-group">
+    <label>Activity Type</label>
+    <select name="activity_type_id" required>
+      <option value="">Select type</option>
+      <% types.forEach(function(t) { %>
+        <option value="<%= t.id %>"><%= t.name %></option>
+      <% }) %>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Organizer</label>
+    <input type="text" name="organizer" value="<%= activity ? activity.organizer : '' %>" required>
+  </div>
+  <div class="form-group">
+    <label>Date</label>
+    <input type="date" name="event_date" value="<%= activity ? activity.event_date : '' %>" required>
+  </div>
+  <div class="form-group">
+    <label>Duration (days)</label>
+    <input type="number" name="duration_days" min="1" value="<%= activity ? activity.duration_days : '' %>" required>
+  </div>
+  <div class="form-group">
+    <label>Mode</label>
+    <select name="mode" required>
+      <option value="">Select mode</option>
+      <option value="Online">Online</option>
+      <option value="Offline">Offline</option>
+      <option value="Hybrid">Hybrid</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Save Activity</button>
+  <a href="/activities" class="btn">Cancel</a>
+</form>
+
+<%- include('partials/footer') %>

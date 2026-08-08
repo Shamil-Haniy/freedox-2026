@@ -1,0 +1,33 @@
+<%- include('partials/header') %>
+
+<h1>Faculty Directory</h1>
+
+<form method="GET" action="/faculty" class="filter-bar">
+  <input type="text" name="search" placeholder="Search by name or designation..." value="<%= search %>">
+  <select name="department">
+    <option value="">All Departments</option>
+    <% departments.forEach(function(d) { %>
+      <option value="<%= d.id %>" <%= String(department) === String(d.id) ? 'selected' : '' %>><%= d.name %></option>
+    <% }) %>
+  </select>
+  <button type="submit" class="btn btn-primary">Filter</button>
+</form>
+
+<table>
+  <thead>
+    <tr><th>Name</th><th>Designation</th><th>Department</th><th>Activities</th><th></th></tr>
+  </thead>
+  <tbody>
+    <% faculty.forEach(function(f) { %>
+      <tr>
+        <td><%= f.name %></td>
+        <td><%= f.designation %></td>
+        <td><%= f.department_name %></td>
+        <td><%= f.activity_count %></td>
+        <td><a href="/faculty/<%= f.id %>" class="btn btn-small">View Profile</a></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<%- include('partials/footer') %>

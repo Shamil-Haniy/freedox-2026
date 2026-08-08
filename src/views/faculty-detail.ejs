@@ -1,0 +1,43 @@
+<%- include('partials/header') %>
+
+<div class="profile-header">
+  <h1><%= faculty.name %></h1>
+  <p class="muted"><%= faculty.designation %> &middot; <%= faculty.department_name %></p>
+</div>
+
+<h2>Complete FDP / Activity History</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Activity</th><th>Type</th><th>Date</th><th>Duration</th>
+      <th>Mode</th><th>Role</th><th>Evidence</th><th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% history.forEach(function(h) { %>
+      <tr>
+        <td><a href="/activities/<%= h.activity_id %>"><%= h.title %></a></td>
+        <td><%= h.activity_type %></td>
+        <td><%= h.event_date %></td>
+        <td><%= h.duration_days %> days</td>
+        <td><%= h.mode %></td>
+        <td><%= h.role %></td>
+        <td><%= h.evidence_ref || 'N/A' %></td>
+        <td>
+          <form method="POST" action="/participations/<%= h.id %>/status" class="inline-form">
+            <select name="verification_status">
+              <option value="Pending" <%= h.verification_status === 'Pending' ? 'selected' : '' %>>Pending</option>
+              <option value="Verified" <%= h.verification_status === 'Verified' ? 'selected' : '' %>>Verified</option>
+              <option value="Rejected" <%= h.verification_status === 'Rejected' ? 'selected' : '' %>>Rejected</option>
+            </select>
+            <button type="submit" class="btn btn-small">Save</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<a href="/faculty" class="btn">&larr; Back to Faculty</a>
+
+<%- include('partials/footer') %>

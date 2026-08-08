@@ -1,0 +1,62 @@
+<%- include('partials/header') %>
+
+<h1>FDP Participation Dashboard</h1>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-number"><%= totals.faculty_count %></div>
+    <div class="stat-label">Faculty Members</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number"><%= totals.activity_count %></div>
+    <div class="stat-label">Activities</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number"><%= totals.participation_count %></div>
+    <div class="stat-label">Participations</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number"><%= totals.verified_count %></div>
+    <div class="stat-label">Verified Evidences</div>
+  </div>
+</div>
+
+<div class="report-grid">
+  <div class="card">
+    <h2>FDP Participation Summary</h2>
+    <table>
+      <thead><tr><th>Activity Type</th><th>Participations</th></tr></thead>
+      <tbody>
+        <% fdpSummary.forEach(function(row) { %>
+          <tr><td><%= row.activity_type %></td><td><%= row.total_participations %></td></tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Department-wise Participation</h2>
+    <table>
+      <thead><tr><th>Department</th><th>Participations</th></tr></thead>
+      <tbody>
+        <% deptParticipation.forEach(function(row) { %>
+          <tr><td><%= row.department %></td><td><%= row.total %></td></tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Activity Category Analysis</h2>
+    <table>
+      <thead><tr><th>Category</th><th>Activities</th><th>Participations</th></tr></thead>
+      <tbody>
+        <% categoryAnalysis.forEach(function(row) { %>
+          <tr><td><%= row.category %></td><td><%= row.activities %></td><td><%= row.participations %></td></tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
