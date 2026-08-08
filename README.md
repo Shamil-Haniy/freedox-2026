@@ -188,25 +188,27 @@ Every step recalculates the reports live.
 
 # What We'd Add With More Time
 
-Being honest about the MVP boundary:
+1.Being honest about the MVP boundary:
 
-Real file uploads for evidence (right now it's a reference string).
+2.Real file uploads for evidence (right now it's a reference string).
 
-Authentication and roles — faculty see/edit only their own records; admins verify.
+3.Authentication and roles — faculty see/edit only their own records; admins verify.
 
-CSV/PDF export of the reports for the accreditation submission.
+4.CSV/PDF export of the reports for the accreditation submission.
 
-Pagination on the activity list once it grows past a few dozen.
+5.Pagination on the activity list once it grows past a few dozen.
 
 Team — Ohm's Lawbreakers
 
 # Member
-Focus
 Shamil Haniy
 Team Lead,Database design, backend routes, ER modeling
+
 [Adrian V Toras]
 Frontend views, CSS
+
 [Aveez KM]
 Dummy data, acceptance testing,ER modeling
+
 [Tauheed]
 Documentation, presentation
