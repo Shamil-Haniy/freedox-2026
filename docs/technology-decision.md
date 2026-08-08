@@ -48,7 +48,6 @@ We need a simple CRUD interface with search, filters, forms, and dashboard repor
 Options considered:
 1. Node.js + Express + EJS
 2. React + separate API
-3. Django
 
 Evaluation:
 React adds build complexity and is unnecessary for server-rendered dashboard tables. Django adds more structure than needed for this MVP. Express and EJS allow us to render database data directly with minimal setup.
@@ -56,5 +55,7 @@ React adds build complexity and is unnecessary for server-rendered dashboard tab
 Decision:
 We chose Node.js, Express, and EJS.
 
+AI Used
+  QWen 3.8 Max
 Evidence:
 The stack is lightweight, runs offline, and supports the required Create, View, Search, Update, and Report flow without complex frontend tooling.
