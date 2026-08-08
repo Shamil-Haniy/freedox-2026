@@ -44,14 +44,14 @@ erDiagram
 
 ## The V09 design challenge — our call
 
-This problem deliberately overlaps with V04 (student events). We had to decide whether Event/Activity is one shared core entity or kept separate per participant type.
+This one overlaps a lot with V04 (student events), so early on we had to figure out:should Event/Activity be one shared table for everyone,or does each participant type get its own thing?
 
-**What we chose:** `activities` is a reusable master table describing the event itself (title, type, organizer, date, mode). The `participations` table is the faculty-specific link that ties a faculty member to an activity and carries their role, evidence and verification status.
+We went with `activities` as a shared master table — it just holds the details of the event itself (title,type,organizer,date,mode). Then `participations` is where the faculty-specific stuff lives: which faculty member attended, what role they played, their evidence, and whether it's been verified.
 
-**Why not one giant shared participation table for both students and faculty?** A generic `participant_id` + `participant_type` design can't have clean foreign keys to two different tables at once, so we would lose referential integrity. For an accreditation tool, integrity matters more than clever reuse.
+We thought about doing one big generic participation table for both students and faculty, using something like `participant_id` + `participant_type` to tell them apart. It sounded neat on paper but it breaks foreign keys... you can't point one column at two different tables and still have the database enforce integrity properly. Since this whole system exists to back up accreditation claims, we didn't want to risk that. A clean FK beats a clever shortcut here.
 
-**Why not a flat table?** Flattening would copy the activity details (organizer, date, mode) once per attendee, which is wasteful and invites inconsistency.
+We also didn't want to just flatten everything into one wide table with the event details repeated on every row. That means if 30 faculty attend the same workshop, you'd have the organizer, date and mode copied 30 times — and the moment someone updates one row and not the others, your data's out of sync. Keeping activities separate avoids that entirely.
 
-**Evidence sits on participation, not activity:** the certificate proves a specific person attended, so `evidence_ref` belongs on the participation row.
+One more thing: the evidence (certificate, proof of attendance, whatever) lives on the `participations` row, not on `activities`. That's because the evidence is proving that *this specific person* was there — it's not a property of the event itself, it's a property of their attendance.
 
-If student participation were added later, we would create a `student_participations` table pointing at the same `activities` table rather than breaking the faculty foreign keys.
+So if we end up adding students later, the plan is to just add a `student_participations` table that also points back to `activities`. That way faculty's foreign keys never have to change, and we're not retrofitting anything.
