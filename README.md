@@ -68,9 +68,9 @@ A faculty member attends many activities, and an activity has many faculty — a
 | `activity_types` | Master list — FDP, Workshop, Conference, STTP |
 | `activities` | The event itself — title, type, organizer, date, duration, mode |
 | `participations` | Junction — which faculty attended which activity, plus role, evidence, status |
-| `departments ── faculty ──┐
-├── participations
-|activity_types ── activities ──┘
+| `departments` ── faculty
+| `participations`
+| `activity_types` |activities 
 
 
 ---
