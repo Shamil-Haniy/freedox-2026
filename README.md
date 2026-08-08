@@ -167,31 +167,46 @@ Then open http://localhost:3001
 
 # How to Test It (the acceptance-test path)
 The problem card's acceptance test says: "A reviewer can add an activity and register multiple faculty to it, and pull a single faculty member's full FDP/activity history."
+
 Here's exactly how to do that in our app:
+
 Dashboard — note the stat cards and the three report tables.
+
 Activities → Add New Activity — fill the form and submit. You land on the new activity's detail page.
+
 Register faculty — use the form at the bottom of the activity page to register two or three faculty, adding an evidence reference.
+
 Faculty — search for one of the faculty you just registered and open their profile.
+
 See their full history — the activity you just created is there, with the evidence reference.
+
 Update — change a verification status using the dropdown.
+
 Delete — hit "Remove" on a participation, or "Delete Activity" on an activity page. Watch the dashboard numbers adjust.
+
 Every step recalculates the reports live.
 
 # What We'd Add With More Time
-.Being honest about the MVP boundary:
-.Real file uploads for evidence (right now it's a reference string).
-.Authentication and roles — faculty see/edit only their own records; admins verify.
-.CSV/PDF export of the reports for the accreditation submission.
-.Pagination on the activity list once it grows past a few dozen.
-.Team — Ohm's Lawbreakers
+
+Being honest about the MVP boundary:
+
+Real file uploads for evidence (right now it's a reference string).
+
+Authentication and roles — faculty see/edit only their own records; admins verify.
+
+CSV/PDF export of the reports for the accreditation submission.
+
+Pagination on the activity list once it grows past a few dozen.
+
+Team — Ohm's Lawbreakers
 
 # Member
 Focus
 Shamil Haniy
-Database design, backend routes, ER modeling
+Team Lead,Database design, backend routes, ER modeling
 [Adrian V Toras]
 Frontend views, CSS
 [Aveez KM]
-Dummy data, acceptance testing
+Dummy data, acceptance testing,ER modeling
 [Tauheed]
 Documentation, presentation
