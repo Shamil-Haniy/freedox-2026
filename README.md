@@ -1,7 +1,7 @@
 # V09 — Faculty Development & Participation Tracker
 
 **Team:** Ohm's Lawbreakers  
-**Event:** DocFree Hackathon 2026  
+**Event:** FreeDox Hackathon 2026  
 **Problem Statement:** V09 — Faculty Development & Participation
 
 ---
