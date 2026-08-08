@@ -7,7 +7,7 @@ DocFree Hackathon 2026
 A faculty activity tracker that records FDPs, workshops, conferences and training programs, registers which faculty attended, and keeps an evidence/verification trail for accreditation reporting.
 
 ## The problem in one line
-Institutions need proof of which faculty took part in which development activity, with evidence, so they can report it during accreditation.
+Institutions need proof of which faculty took part in which development activity, with evidence, so they can report it during accreditation
 
 ## Tech stack
 - Backend: Node.js + Express
